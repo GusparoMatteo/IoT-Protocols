@@ -1,3 +1,2 @@
-# IoT-Protocols
-Marostegan Denis
-Gusparo Matteo
+#Client: Denis Marostegan
+#Server: Matteo Gusparo
