@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\Progetto\\client\\NetCoreClient\\NetCoreClient.csproj": {}
+    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\Progetto\\client\\NetCoreClient\\NetCoreClient.csproj": {
+    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\Progetto\\client\\NetCoreClient\\NetCoreClient.csproj",
+        "projectUniqueName": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj",
         "projectName": "NetCoreClient",
-        "projectPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\Progetto\\client\\NetCoreClient\\NetCoreClient.csproj",
+        "projectPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj",
         "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\Progetto\\client\\NetCoreClient\\obj\\",
+        "outputPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
