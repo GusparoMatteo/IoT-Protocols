@@ -5,11 +5,16 @@ const path = require('path')
 var server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
+// const db = new sqlite3.Database //crea la connessione al database
+//     (path.join
+//         (__dirname,"../db/Macchine.db" )
+//     )
 
-const db = new sqlite3.Database //crea la connessione al database
-    (path.join
+// const db = new sqlite3.Database("C:\Users\Utente\Desktop\Iot Protocols\db\database.db")
+
+const db = new sqlite3.Database(path.join
         (__dirname,
-            '../db',
+            '/db',
             'database.db'
         )
     )
@@ -22,43 +27,62 @@ const db = new sqlite3.Database //crea la connessione al database
 //     )
 
 server.get('/cars', function(req, res, next) {
+    console.log(req.body);
+    // db.serialize(() => {
+    //     db.all('select ROWID, * from cars', (err, rows) => {
+    //         if (err) {
+    //             console.error(err)
+    //             res.statusCode = 500;
+    //             res.send('errore elenco dati') 
+    //         } else {
+    //             res.send(rows)        
+    //         }
+    //     })
+    // })
 
-
-    res.send('List of cars: [TODO]');
+    //res.send('List of cars: [TODO]');
     return next();
 });
 
 server.get('/cars/:id', function(req, res, next) {
+    console.log(req.body)
+    res.send('Current values for car ' + req.params['id'] + ': [TODO]');
+//     // db.serialize(() => {
+//     //     db.get('select ROWID, * from cars WHERE ROWID = $id',
+//     //         {
+//     //             $id: req.params.id    //permette di passare i parametri in /log/:id
+//     //         },
+//     //         (err, row) => {
+//     //             //console.log(err)      //per mostrare gli errori
+//     //             if (err) {
+//     //                 console.error(err)
+//     //                 res.statusCode = 400;
+//     //                 res.send('errore database')  //gestione errore
+//     //             } else {
+//     //                 res.send(row)
+//     //             }
+//     //         })
+//     // })
 
-    db.serialize(() => {
-        db.get('select ROWID, * from cars WHERE ROWID = $id',
-            {
-                $id: req.params.id    //permette di passare i parametri in /log/:id
-            },
-            (err, row) => {
-                //console.log(err)      //per mostrare gli errori
-                if (err) {
-                    console.error(err)
-                    res.statusCode = 400;
-                    res.send('errore database')  //gestione errore
-                } else {
-                    res.send(row)
-                }
-            })
-    })
-
-    //res.send('Current values for car ' + req.params['id'] + ': [TODO]');
-    return next();
+//     //res.send('Current values for car ' + req.params['id'] + ': [TODO]');
+  return next(); 
 });
 
 server.post('/cars/:id', function(req, res, next) {
-    res.send('Data received from car [TODO]');
-
     console.log(req.body);
-
+    // res.send('Data received from car ' + req.params['id'] + ' ');
+    db.serialize(() => {
+        db.run('INSERT INTO cars(LevelBattery) VALUES ($LevelBattery)',
+            {
+                $LevelBattery: req.body,
+                // $Speed: req.body.Speed,
+            },
+            res.send('Car creata')
+        )
+    })
     return next();
 });
 
 server.listen(8080, function() {
-    console.log('%s listening at %s', server.name, server.url);
+    //console.log('%s listening at %s', server.name, server.url);
 });
