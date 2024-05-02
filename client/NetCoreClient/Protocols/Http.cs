@@ -2,7 +2,7 @@
 
 namespace NetCoreClient.Protocols
 {
-    class Http : ProtocolInterface
+    class Http : IProtocolInterface
     {
         private string Endpoint;
         //private HttpWebRequest httpWebRequest;
@@ -12,7 +12,7 @@ namespace NetCoreClient.Protocols
             this.Endpoint = endpoint;
         }
 
-        public async void Send(string data)
+        public async void Send(string data, string sensor)
         {
             var client = new HttpClient();
 

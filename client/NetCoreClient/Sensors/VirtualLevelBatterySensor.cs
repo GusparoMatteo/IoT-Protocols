@@ -21,5 +21,10 @@ namespace NetCoreClient.Sensors
         {
             return JsonSerializer.Serialize(LevelBattery());
         }
+
+        public string GetSlug()
+        {
+            return "LevelBattery";
+        }
     }
 }

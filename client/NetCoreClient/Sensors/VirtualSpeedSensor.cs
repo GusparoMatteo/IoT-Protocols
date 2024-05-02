@@ -21,5 +21,10 @@ namespace NetCoreClient.Sensors
         {
             return JsonSerializer.Serialize(Speed());
         }
+
+        public string GetSlug()
+        {
+            return "Speed";
+        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj": {}
+    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols\\client\\NetCoreClient\\NetCoreClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj": {
+    "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols\\client\\NetCoreClient\\NetCoreClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj",
+        "projectUniqueName": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols\\client\\NetCoreClient\\NetCoreClient.csproj",
         "projectName": "NetCoreClient",
-        "projectPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\NetCoreClient.csproj",
+        "projectPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols\\client\\NetCoreClient\\NetCoreClient.csproj",
         "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols-Denis_Matteo\\client\\NetCoreClient\\obj\\",
+        "outputPath": "C:\\Users\\Utente\\Documents\\Progetti\\Protocolli IoT\\iot-protocols\\client\\NetCoreClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MQTTnet": {
+              "target": "Package",
+              "version": "[4.3.3.952, )"
+            },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[6.0.0, )"
