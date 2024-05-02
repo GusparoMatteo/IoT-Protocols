@@ -43,6 +43,10 @@ Server:
 > Messaggio non in chiaro;
 > Connessione al database;
 
+----------------------------------------------
+
+# Protocollo MQTT
+
 ## 11/04/2024
 
 Invio dati dal cliente al databasee finalizzazione del protocollo http:
