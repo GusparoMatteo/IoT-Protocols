@@ -74,3 +74,5 @@ C:\Users\Utente\Documents\Progetti\Protocolli IoT\iot-protocols-Denis_Matteo\cli
 C:\Users\Utente\Documents\Progetti\Protocolli IoT\iot-protocols-Denis_Matteo\client\NetCoreClient\obj\Debug\net6.0\NetCoreClient.genruntimeconfig.cache
 C:\Users\Utente\Documents\Progetti\Protocolli IoT\iot-protocols-Denis_Matteo\client\NetCoreClient\obj\Debug\net6.0\ref\NetCoreClient.dll
 C:\Users\Utente\Documents\Progetti\Protocolli IoT\iot-protocols-Denis_Matteo\client\NetCoreClient\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Utente\Documents\Progetti\Protocolli IoT\IoT-Protocols\client\NetCoreClient\bin\Debug\net6.0\MQTTnet.dll
+C:\Users\Utente\Documents\Progetti\Protocolli IoT\IoT-Protocols\client\NetCoreClient\bin\Debug\net6.0\Newtonsoft.Json.dll

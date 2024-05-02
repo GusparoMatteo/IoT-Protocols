@@ -1,8 +1,5 @@
 ﻿using NetCoreClient.Sensors;
 using NetCoreClient.Protocols;
-using System.Text.Json;
-using Newtonsoft.Json.Linq;
-using System.Globalization;
 
 // define sensors
 List<ISensorInterface> sensors = new(); 
@@ -10,44 +7,21 @@ List<ISensorInterface> sensors = new();
 sensors.Add(new VirtualLevelBatterySensor());
 
 // define protocol
-ProtocolInterface protocol = new Http("https://3456-217-201-225-112.ngrok-free.app/cars/123");
-
+//IProtocolInterface protocol = new Http("https://3456-217-201-225-112.ngrok-free.app/cars/123");
+IProtocolInterface protocol = new Mqtt("test.mosquitto.org");
 // send data to server
 while (true)
 {
-//    string s1 = @"{
-//  'FirstName': 'John',
-//  'LastName': 'Smith',
-//  'Enabled': false,
-//  'Roles': [ 'User' ]
-//}";
-    //var json1 = JObject.Parse(s1);
-    //var json2 = JObject.Parse(s1);
+
     foreach (ISensorInterface sensor in sensors)
     {
         var sensorValue = sensor.ToJson();
-        //json1.Merge(sensorValue);
 
-        //if (json2 != JObject.Parse(s1))
-        //{
-        //    json2.Merge(json1);
-        //}
-        //else
-        //{
-        //    json2 = json1;
-        //}
-        protocol.Send(sensorValue);
+        protocol.Send(sensorValue, sensor.GetSlug());
 
         Console.WriteLine(sensorValue);
 
-        Thread.Sleep(5000);
+        Thread.Sleep(1000);
 
     }
-
-    //var message = JsonSerializer.Serialize(json2);
-    //protocol.Send(message);
-
-    //Console.WriteLine(message);
-
-    //Thread.Sleep(5000);
 }
