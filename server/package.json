@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.10.4",
+    "mqtt": "^5.5.1",
     "path": "^0.12.7",
     "restify": "^11.1.0",
     "sqlite3": "^5.1.7"
