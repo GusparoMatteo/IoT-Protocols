@@ -62,14 +62,14 @@ Server:
 
 ## 18/04/2024
 
-Invio dati dal cliente al databasee finalizzazione del protocollo mqtt:
+Invio dati dal cliente al database e finalizzazione del protocollo mqtt:
 
 Cliente:
 > Inserita protocollo mqtt con ausilio test.mosquito.org
 
 Server:
 
-## Implementazione Comandi Avvanzti
+## Implementazione Comandi Avanzati
 all'interno della classe si è discusso su 4 esigenze che potrebbero essere utili al progetto che sono:
  1. conoscere/stampare in console lo stato di tutte le auto, limitatamente a:
 	-   accesa: si/no
@@ -149,13 +149,13 @@ ES.:
 
 ----------------------------------------------------
 
-# Protocollo AQMP
+# Protocollo AMQP
 
 ## 09/05/2024
 
 Client: 
 
-Inserito il protocollo AQMP come espresso nel sito: "https://www.rabbitmq.com/tutorials/tutorial-one-dotnet"
+Inserito il protocollo AMQP come espresso nel sito: "https://www.rabbitmq.com/tutorials/tutorial-one-dotnet"
 > Collegamento al broker gratis CloudAMQP, con Littel Lemur come piano attivato.
 > Invio dati tramite codice c#.
 
