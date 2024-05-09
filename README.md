@@ -156,8 +156,9 @@ ES.:
 Client: 
 
 Inserito il protocollo AQMP come espresso nel sito: "https://www.rabbitmq.com/tutorials/tutorial-one-dotnet"
-> Collegamento al broker gratis CloudAMQP, con Littel Lemur come piano attivato
+> Collegamento al broker gratis CloudAMQP, con Littel Lemur come piano attivato.
 > Invio dati tramite codice c#.
+
  esempio di codice di collegamento:
 
 ```c#
