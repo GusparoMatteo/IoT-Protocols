@@ -25,7 +25,12 @@ JsonSerializer come serializzatore di json;
 Nel programma principale, per ogni json creato, lo serializzo per poi inviarlo al server che poi lo processerà adeguatamente
 
 ## Server:
-Comprensione della struttura dell'applicazione fornita su github e della piattaforma ngrok
+**HTTP:**
+Tramite l'utilizzo di metodi http è possibile ricevere post e salvare nel database eventuali messaggi, è presente l'ossatura per le get di dati da un database ma non è stata implementata al momento
+**MQTT:**
+Viene utilizzato il broker di mosquitto ("mqtt://test.mosquitto.org") ed un topic apposito per la ricezione di messaggi da client
+**AMQP:**
+Utilizzo come broker CloudAmqp su cui creo un canale apposito dove leggere le queue di messaggi inviati
 
 ## 04/04/2024
 
@@ -35,7 +40,7 @@ Cliente:
 invio messaggio tramite progetto in c# fornito al server;
 
 Server:
-Creazione di un database in local su cui salvare i messaggi ricevuti tramite http, utilizzo di dbeaver per il database e libreria sqlite su node.
+Comprensione della struttura dell'applicazione fornita di base, selezione di un database da usare per salvare i dati in questo caso utilizziamo un database sqlite che organizziamo tramite DBeaver. utilizzo del metodo post per ricevere i messaggi tramite piattaforma ngrok e salvarli nel database, c'era intenzione di implementare anche gli altri metodi http ma poi scartati in seguito.
 
 ## Problemi Riscontrati:
 struttura del messaggio e connessione al database
@@ -46,17 +51,17 @@ struttura del messaggio e connessione al database
 
 ## 11/04/2024
 
-Invio dati dal cliente al databasee finalizzazione del protocollo http:
+Invio dati dal cliente al database finalizzazione del protocollo http:
 
 Cliente:
 > ## Problemi Riscontrati:
 > impossibilitato a mandare un json unico con il pacchetto utato, risolto mandando uno alla volta
 
 Server:
-> ## Problemi Riscontrati:
-> ~~Non si riesce a creare un DB~~
-> sistiemano il problema della creazione db e inserimento dati
+Sempre tramite utilizzo del codice base fornitoci abbiamo strutturato in modo che tramite il broker mosquitto si potessero leggere messaggi in appositi topic in questo caso "carDM/car22sasso/#" che ci permetteva di leggere anche eventuali sensori aggiuntivi oltre a LevelBattery per una specifica macchina.
 
+> ## Problemi Riscontrati:
+> Difficoltà iniziale con la lettura dei messaggi e inserimento nel database
 ## 18/04/2024
 
 Invio dati dal cliente al database e finalizzazione del protocollo mqtt:
@@ -182,4 +187,7 @@ public async void Send(string data, string sensor)
     Console.WriteLine($" [x] Sent {sensor}: {data}");
 }
 ```
+
+Server: 
+Utilizzato una base di codice per la lettura di messaggi tramite broker CloudAmqp, la coda dei messaggi viene letta sul canale 'hello' del broker e per ogni dato ricevuto viene salvato nell apposito database.
 
