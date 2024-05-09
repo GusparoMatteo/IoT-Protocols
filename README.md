@@ -40,6 +40,7 @@ Cliente:
 invio messaggio tramite progetto in c# fornito al server;
 
 Server:
+
 Comprensione della struttura dell'applicazione fornita di base, selezione di un database da usare per salvare i dati in questo caso utilizziamo un database sqlite che organizziamo tramite DBeaver. utilizzo del metodo post per ricevere i messaggi tramite piattaforma ngrok e salvarli nel database, c'era intenzione di implementare anche gli altri metodi http ma poi scartati in seguito.
 
 ## Problemi Riscontrati:
