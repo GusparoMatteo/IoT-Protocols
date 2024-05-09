@@ -25,23 +25,20 @@ JsonSerializer come serializzatore di json;
 Nel programma principale, per ogni json creato, lo serializzo per poi inviarlo al server che poi lo processerà adeguatamente
 
 ## Server:
-Creato un database sqlite tramite utilizzo di dbeaver. apro la connessione nel index e in base alla richiesta http del client apro la connessione al database e leggo o invio dati ad esso.
-
-# Processo di Lavoro
-# Protocollo HTTP
+Comprensione della struttura dell'applicazione fornita su github e della piattaforma ngrok
 
 ## 04/04/2024
 
 Inizio lavoro sul protocollo Html:
 
 Cliente:
-> invio messaggio tramite progetto in c# fornito al server;
+invio messaggio tramite progetto in c# fornito al server;
 
 Server:
-> ricevitore del messaggio tramite progetto in c# fornito e tramite il programma ngrok per le comunicazioni;
-> ## Problemi Riscontrati:
-> Messaggio non in chiaro;
-> Connessione al database;
+Creazione di un database in local su cui salvare i messaggi ricevuti tramite http, utilizzo di dbeaver per il database e libreria sqlite su node.
+
+## Problemi Riscontrati:
+struttura del messaggio e connessione al database
 
 ----------------------------------------------
 
