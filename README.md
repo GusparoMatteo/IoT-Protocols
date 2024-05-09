@@ -37,6 +37,7 @@ Utilizzo come broker CloudAmqp su cui creo un canale apposito dove leggere le qu
 Inizio lavoro sul protocollo Html:
 
 Cliente:
+
 invio messaggio tramite progetto in c# fornito al server;
 
 Server:
