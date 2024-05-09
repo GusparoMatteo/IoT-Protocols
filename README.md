@@ -188,7 +188,8 @@ public async void Send(string data, string sensor)
 }
 ```
 
-Server: 
+Server:
+
 Utilizzato una base di codice per la lettura di messaggi tramite broker CloudAmqp, la coda dei messaggi viene letta sul canale 'hello' del broker e per ogni dato ricevuto viene salvato nell apposito database.
 
 sito utilizzato: "https://www.rabbitmq.com/tutorials/tutorial-one-javascript"
