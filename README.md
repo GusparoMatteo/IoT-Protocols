@@ -25,23 +25,27 @@ JsonSerializer come serializzatore di json;
 Nel programma principale, per ogni json creato, lo serializzo per poi inviarlo al server che poi lo processerà adeguatamente
 
 ## Server:
-Creato un database sqlite tramite utilizzo di dbeaver. apro la connessione nel index e in base alla richiesta http del client apro la connessione al database e leggo o invio dati ad esso.
-
-# Processo di Lavoro
-# Protocollo HTTP
+**HTTP:**
+Tramite l'utilizzo di metodi http è possibile ricevere post e salvare nel database eventuali messaggi, è presente l'ossatura per le get di dati da un database ma non è stata implementata al momento
+**MQTT:**
+Viene utilizzato il broker di mosquitto ("mqtt://test.mosquitto.org") ed un topic apposito per la ricezione di messaggi da client
+**AMQP:**
+Utilizzo come broker CloudAmqp su cui creo un canale apposito dove leggere le queue di messaggi inviati
 
 ## 04/04/2024
 
 Inizio lavoro sul protocollo Html:
 
 Cliente:
-> invio messaggio tramite progetto in c# fornito al server;
+
+invio messaggio tramite progetto in c# fornito al server;
 
 Server:
-> ricevitore del messaggio tramite progetto in c# fornito e tramite il programma ngrok per le comunicazioni;
-> ## Problemi Riscontrati:
-> Messaggio non in chiaro;
-> Connessione al database;
+
+Comprensione della struttura dell'applicazione fornita di base, selezione di un database da usare per salvare i dati in questo caso utilizziamo un database sqlite che organizziamo tramite DBeaver. utilizzo del metodo post per ricevere i messaggi tramite piattaforma ngrok e salvarli nel database, c'era intenzione di implementare anche gli altri metodi http ma poi scartati in seguito.
+
+## Problemi Riscontrati:
+struttura del messaggio e connessione al database
 
 ----------------------------------------------
 
@@ -49,27 +53,27 @@ Server:
 
 ## 11/04/2024
 
-Invio dati dal cliente al databasee finalizzazione del protocollo http:
+Invio dati dal cliente al database finalizzazione del protocollo http:
 
 Cliente:
 > ## Problemi Riscontrati:
 > impossibilitato a mandare un json unico con il pacchetto utato, risolto mandando uno alla volta
 
 Server:
-> ## Problemi Riscontrati:
-> ~~Non si riesce a creare un DB~~
-> sistiemano il problema della creazione db e inserimento dati
+Sempre tramite utilizzo del codice base fornitoci abbiamo strutturato in modo che tramite il broker mosquitto si potessero leggere messaggi in appositi topic in questo caso "carDM/car22sasso/#" che ci permetteva di leggere anche eventuali sensori aggiuntivi oltre a LevelBattery per una specifica macchina.
 
+> ## Problemi Riscontrati:
+> Difficoltà iniziale con la lettura dei messaggi e inserimento nel database
 ## 18/04/2024
 
-Invio dati dal cliente al databasee finalizzazione del protocollo mqtt:
+Invio dati dal cliente al database e finalizzazione del protocollo mqtt:
 
 Cliente:
 > Inserita protocollo mqtt con ausilio test.mosquito.org
 
 Server:
 
-## Implementazione Comandi Avvanzti
+## Implementazione Comandi Avanzati
 all'interno della classe si è discusso su 4 esigenze che potrebbero essere utili al progetto che sono:
  1. conoscere/stampare in console lo stato di tutte le auto, limitatamente a:
 	-   accesa: si/no
@@ -146,3 +150,49 @@ ES.:
 	}
 }
 ```
+
+----------------------------------------------------
+
+# Protocollo AMQP
+
+## 09/05/2024
+
+Client: 
+
+Inserito il protocollo AMQP come espresso nel sito: "https://www.rabbitmq.com/tutorials/tutorial-one-dotnet"
+> Collegamento al broker gratis CloudAMQP, con Littel Lemur come piano attivato.
+> Invio dati tramite codice c#.
+
+ esempio di codice di collegamento:
+
+```c#
+public async void Send(string data, string sensor)
+{
+    var factory = new ConnectionFactory
+    {
+        Uri = new Uri(_endpoint)
+    };
+    using var connection = factory.CreateConnection();
+    using var channel = connection.CreateModel();
+
+    channel.QueueDeclare(queue: "hello",
+             durable: false,
+             exclusive: false,
+             autoDelete: false,
+             arguments: null);
+
+    var body = Encoding.UTF8.GetBytes($"{sensor}: {data}");
+    channel.BasicPublish(exchange: string.Empty,
+             routingKey: "hello",
+             basicProperties: null,
+             body: body);
+    Console.WriteLine($" [x] Sent {sensor}: {data}");
+}
+```
+
+Server:
+
+Utilizzato una base di codice per la lettura di messaggi tramite broker CloudAmqp, la coda dei messaggi viene letta sul canale 'hello' del broker e per ogni dato ricevuto viene salvato nell apposito database.
+
+sito utilizzato: "https://www.rabbitmq.com/tutorials/tutorial-one-javascript"
+
