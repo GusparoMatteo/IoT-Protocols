@@ -146,3 +146,42 @@ ES.:
 	}
 }
 ```
+
+----------------------------------------------------
+
+# Protocollo AQMP
+
+## 09/05/2024
+
+Client: 
+
+Inserito il protocollo AQMP come espresso nel sito: "https://www.rabbitmq.com/tutorials/tutorial-one-dotnet"
+> Collegamento al broker gratis CloudAMQP, con Littel Lemur come piano attivato
+> Invio dati tramite codice c#.
+ esempio di codice di collegamento:
+
+```c#
+public async void Send(string data, string sensor)
+{
+    var factory = new ConnectionFactory
+    {
+        Uri = new Uri(_endpoint)
+    };
+    using var connection = factory.CreateConnection();
+    using var channel = connection.CreateModel();
+
+    channel.QueueDeclare(queue: "hello",
+             durable: false,
+             exclusive: false,
+             autoDelete: false,
+             arguments: null);
+
+    var body = Encoding.UTF8.GetBytes($"{sensor}: {data}");
+    channel.BasicPublish(exchange: string.Empty,
+             routingKey: "hello",
+             basicProperties: null,
+             body: body);
+    Console.WriteLine($" [x] Sent {sensor}: {data}");
+}
+```
+
