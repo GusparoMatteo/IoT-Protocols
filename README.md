@@ -60,7 +60,7 @@ Cliente:
 > impossibilitato a mandare un json unico con il pacchetto utato, risolto mandando uno alla volta
 
 Server:
-Sempre tramite utilizzo del codice base fornitoci abbiamo strutturato in modo che tramite il broker mosquitto si potessero leggere messaggi in appositi topic in questo caso "carDM/car22sasso/#" che ci permetteva di leggere anche eventuali sensori aggiuntivi oltre a LevelBattery per una specifica macchina.
+Sempre tramite utilizzo di codice base fornitoci abbiamo strutturato in modo che tramite il broker di mosquitto si potessero leggere messaggi in appositi topic in questo caso "carDM/car22sasso/#" che ci permetteva di leggere anche eventuali sensori aggiuntivi oltre a LevelBattery per una specifica macchina, dati che poi vengono salvati in database sempre in sqlite
 
 > ## Problemi Riscontrati:
 > Difficoltà iniziale con la lettura dei messaggi e inserimento nel database
